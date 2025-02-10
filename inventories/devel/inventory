@@ -1,0 +1,13 @@
+[test_hosts]
+ubuntu ansible_host=10.0.2.5
+
+[ubuntu_hosts]
+ubuntu
+
+[plex_servers]
+plexserver ansible_host=10.0.2.5
+
+[test_hosts:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+

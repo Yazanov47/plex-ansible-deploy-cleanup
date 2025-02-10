@@ -1,0 +1,32 @@
+---
+- name: Cleanup Plex Media Server
+  hosts: plex_servers
+  become: yes
+  vars:
+    plex_install_dir: "/opt/plex"
+  tasks:
+    - name: Stop Plex Media Server
+      systemd:
+        name: plexmediaserver
+        state: stopped
+        enabled: no
+
+    - name: Remove Plex Media Server package
+      apt:
+        name: plexmediaserver
+        state: absent
+
+    - name: Remove Plex Media Server deb file
+      file:
+        path: "/tmp/plexmediaserver.deb"
+        state: absent
+
+    - name: Remove Plex install directory
+      file:
+        path: "{{ plex_install_dir }}"
+        state: absent
+
+    - name: Remove Plex config file
+      file:
+        path: "{{ plex_install_dir }}/config.cfg"
+        state: absent

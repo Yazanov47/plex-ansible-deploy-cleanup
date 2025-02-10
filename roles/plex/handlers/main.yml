@@ -1,0 +1,7 @@
+---
+# handlers file for plex
+- name: Restart Plex Server
+  systemd:
+    name: plexmediaserver
+    state: restarted
+  become: yes

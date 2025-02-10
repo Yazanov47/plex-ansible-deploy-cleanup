@@ -1,0 +1,6 @@
+---
+- name: Test Plex Media Server Deployment
+  hosts: localhost
+  remote_user: root
+  roles:
+    - plex
